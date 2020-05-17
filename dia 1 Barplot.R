@@ -39,7 +39,7 @@
 
 
 #GGplotmean(Base$dia)
-	 ggplot(Base, aes(x=Region, y=n)) + 
+	 a <- ggplot(Base, aes(x=Region, y=n)) + 
 	  geom_bar(stat='identity', position = "identity", fill="#1AC000") +
 	  geom_text(aes(label=n , y = n - +3),
 	              position = position_dodge(width = 0.9)) +
@@ -58,6 +58,9 @@
 	  	panel.background = element_blank()
 	  	)  +
 	  transition_time(dia)
+
+	animate(a, nframes = Data %>%
+                             ncol(), fps=4)
 
 #Save
 	   anim_save("Covid-19.gif", animation = last_animation()
